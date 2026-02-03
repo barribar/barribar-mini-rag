@@ -1,0 +1,49 @@
+{
+  "info": {
+    "_postman_id": "39ff64fa-3f19-45b1-ada8-a794d20daa1e",
+    "name": "mini-rag",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "14136067",
+    "_collection_link": "https://go.postman.co/collection/14136067-39ff64fa-3f19-45b1-ada8-a794d20daa1e?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "welcome-request",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "api",
+      "value": ""
+    }
+  ]
+}
