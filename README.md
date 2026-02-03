@@ -19,4 +19,23 @@ answering.
     $ conda activate mini-rag
     ```
 
-    vvvv
+### (Optional) Setup your command line interface for better readability
+
+```bash
+export PS1="\[\033[01;32m\]\u@\h:\w\n\[\033[00m\]\$ "
+```
+
+## Installation
+
+### Install the required packages
+
+```bash
+$ pip install -r requirements.txt
+```
+
+### Setup the enviroment variables
+```bash
+$ cp .env.example .env
+```
+
+Set your environement variables in the .env file. Like 'OPEN_API_KEY' value.
