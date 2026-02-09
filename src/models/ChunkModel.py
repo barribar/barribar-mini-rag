@@ -19,7 +19,7 @@ class ChunkModel(BaseDataModel):
             "_id": object(chunk_id)
         })
 
-        if result in None:
+        if result is None:
             return None
         
         return DataChunk(**result)
