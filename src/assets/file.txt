@@ -1,0 +1,170 @@
+Dump stack initialized at UTC: 2023/11/26 10:42:16, local time: 2023/11/26 11:42:16.
+Starting get secondary dump callbacks size.
+Finish get secondary dump callbacks size.
+Dump Type: 6, Total Dump Size: 619250844, Secondary Dump Size: 1275036.
+Starting write of dump header.
+Finish write of dump header.
+Starting write of kernel bitmap dump header.
+Finish write of bitmap dump header.
+Starting write of memory dump data.
+Dumping physical memory to disk:  0% 
+Dumping physical memory to disk:  5% 
+Dumping physical memory to disk:  10% 
+Dumping physical memory to disk:  15% 
+Dumping physical memory to disk:  20% 
+Dumping physical memory to disk:  25% 
+Dumping physical memory to disk:  30% 
+Dumping physical memory to disk:  35% 
+Dumping physical memory to disk:  40% 
+Dumping physical memory to disk:  45% 
+Dumping physical memory to disk:  50% 
+Dumping physical memory to disk:  55% 
+Dumping physical memory to disk:  60% 
+Dumping physical memory to disk:  65% 
+Dumping physical memory to disk:  70% 
+Dumping physical memory to disk:  75% 
+Dumping physical memory to disk:  80% 
+Dumping physical memory to disk:  85% 
+Dumping physical memory to disk:  90% 
+Dumping physical memory to disk:  95% 
+Dumping physical memory to disk:  100% 
+Finish write of bitmap dump data. Total pages:150800 Pages written:150800
+Starting invoking secondary dump callbacks.
+Calling Win32kWPP secondary callback.
+Return from Win32kWPP secondary callback.
+Writing Win32kWPP secondary callback data.
+Writing Win32kWPP secondary callback data done.
+Calling Win32kWPP secondary callback.
+Return from Win32kWPP secondary callback.
+Writing Win32kWPP secondary callback data.
+Writing Win32kWPP secondary callback data done.
+Calling Win32kWPP secondary callback.
+Return from Win32kWPP secondary callback.
+Writing Win32kWPP secondary callback data.
+Writing Win32kWPP secondary callback data done.
+Calling Win32kWPP secondary callback.
+Return from Win32kWPP secondary callback.
+Writing Win32kWPP secondary callback data.
+Writing Win32kWPP secondary callback data done.
+Calling Win32kWPP secondary callback.
+Return from Win32kWPP secondary callback.
+Writing Win32kWPP secondary callback data.
+Writing Win32kWPP secondary callback data done.
+Calling Win32kWPP secondary callback.
+Return from Win32kWPP secondary callback.
+Writing Win32kWPP secondary callback data.
+Writing Win32kWPP secondary callback data done.
+Calling Win32kWPP secondary callback.
+Return from Win32kWPP secondary callback.
+Writing Win32kWPP secondary callback data.
+Writing Win32kWPP secondary callback data done.
+Calling igdkmdn64.sys secondary callback.
+Return from igdkmdn64.sys secondary callback.
+Writing igdkmdn64.sys secondary callback data.
+Writing igdkmdn64.sys secondary callback data done.
+Calling Win32kWPP secondary callback.
+Return from Win32kWPP secondary callback.
+Writing Win32kWPP secondary callback data.
+Writing Win32kWPP secondary callback data done.
+Calling Win32kWPP secondary callback.
+Return from Win32kWPP secondary callback.
+Writing Win32kWPP secondary callback data.
+Writing Win32kWPP secondary callback data done.
+Calling Win32kWPP secondary callback.
+Return from Win32kWPP secondary callback.
+Writing Win32kWPP secondary callback data.
+Writing Win32kWPP secondary callback data done.
+Calling Win32kWPP secondary callback.
+Return from Win32kWPP secondary callback.
+Writing Win32kWPP secondary callback data.
+Writing Win32kWPP secondary callback data done.
+Calling Win32kWPP secondary callback.
+Return from Win32kWPP secondary callback.
+Writing Win32kWPP secondary callback data.
+Writing Win32kWPP secondary callback data done.
+Calling Win32kWPP secondary callback.
+Return from Win32kWPP secondary callback.
+Writing Win32kWPP secondary callback data.
+Writing Win32kWPP secondary callback data done.
+Calling Win32kWPP secondary callback.
+Return from Win32kWPP secondary callback.
+Writing Win32kWPP secondary callback data.
+Writing Win32kWPP secondary callback data done.
+Calling TRIAGEDUMPDATA secondary callback.
+Return from TRIAGEDUMPDATA secondary callback.
+Writing TRIAGEDUMPDATA secondary callback data.
+Writing TRIAGEDUMPDATA secondary callback data done.
+Calling CRASHDUMP secondary callback.
+Return from CRASHDUMP secondary callback.
+Writing CRASHDUMP secondary callback data.
+Writing CRASHDUMP secondary callback data done.
+Calling ibtusb secondary callback.
+Return from ibtusb secondary callback.
+Writing ibtusb secondary callback data.
+Writing ibtusb secondary callback data done.
+Calling Intel Wireless WiFi Link Adapter secondary callback.
+Return from Intel Wireless WiFi Link Adapter secondary callback.
+Writing Intel Wireless WiFi Link Adapter secondary callback data.
+Writing Intel Wireless WiFi Link Adapter secondary callback data done.
+Calling wdiwifi secondary callback.
+Return from wdiwifi secondary callback.
+Writing wdiwifi secondary callback data.
+Writing wdiwifi secondary callback data done.
+Calling wdiwifi secondary callback.
+Return from wdiwifi secondary callback.
+Writing wdiwifi secondary callback data.
+Writing wdiwifi secondary callback data done.
+Calling wdiwifi secondary callback.
+Return from wdiwifi secondary callback.
+Writing wdiwifi secondary callback data.
+Writing wdiwifi secondary callback data done.
+Calling \Device\DxgKrnl secondary callback.
+Return from \Device\DxgKrnl secondary callback.
+Writing \Device\DxgKrnl secondary callback data.
+Writing \Device\DxgKrnl secondary callback data done.
+Calling PortDriverStandard secondary callback.
+Return from PortDriverStandard secondary callback.
+Writing PortDriverStandard secondary callback data.
+Writing PortDriverStandard secondary callback data done.
+Calling Wdf01000 secondary callback.
+Return from Wdf01000 secondary callback.
+Writing Wdf01000 secondary callback data.
+Writing Wdf01000 secondary callback data done.
+Calling blackbox - CI secondary callback.
+Return from blackbox - CI secondary callback.
+Writing blackbox - CI secondary callback data.
+Writing blackbox - CI secondary callback data done.
+Calling blackbox - Winlogon secondary callback.
+Return from blackbox - Winlogon secondary callback.
+Writing blackbox - Winlogon secondary callback data.
+Writing blackbox - Winlogon secondary callback data done.
+Calling blackbox - NTFS secondary callback.
+Return from blackbox - NTFS secondary callback.
+Writing blackbox - NTFS secondary callback data.
+Writing blackbox - NTFS secondary callback data done.
+Calling blackbox - PNP secondary callback.
+Return from blackbox - PNP secondary callback.
+Writing blackbox - PNP secondary callback data.
+Writing blackbox - PNP secondary callback data done.
+Calling blackbox - BSD secondary callback.
+Return from blackbox - BSD secondary callback.
+Writing blackbox - BSD secondary callback data.
+Writing blackbox - BSD secondary callback data done.
+Calling secondary multi-part dump callbacks.
+Starting SMBiosData multi-part secondary callback.
+Finish SMBiosData multi-part secondary callback.
+Starting SMBiosRegistry multi-part secondary callback.
+Finish SMBiosRegistry multi-part secondary callback.
+Starting SMBiosRegisters multi-part secondary callback.
+Finish SMBiosRegisters multi-part secondary callback.
+Starting SMBiosDataACPI multi-part secondary callback.
+Finish SMBiosDataACPI multi-part secondary callback.
+Starting PCI multi-part secondary callback.
+Finish PCI multi-part secondary callback.
+Starting Etw multi-part secondary callback.
+Finish Etw multi-part secondary callback.
+Finish calling secondary multi-part dump callbacks.
+Finish invoking secondary dump callbacks.
+Starting invoking dump complete callbacks.
+Finish invoking dump complete callbacks.
+Dump completed successfully.
