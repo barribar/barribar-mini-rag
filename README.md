@@ -57,3 +57,12 @@ sudo docker volume rm $(sudo docker volume ls -q) # remove all volumes
 sudo docker system prune --all # clear all
 sudo docker compose up -d # start docker (-d en background)
 
+### Ollama
+sudo systemctl disable --now ollama # désactive Ollama au démarrage et arrête immédiatement le service encours
+
+lsof -i :11434 # Vérifier que le port est libéré
+
+systemctl list-unit-files | grep ollama # Vérifier si Ollama est installé comme service systemd 
+sudo systemctl disable ollama # Désactiver le service au démarrage
+sudo systemctl stop ollama # Arrêter le service en cours (si actif)
+
