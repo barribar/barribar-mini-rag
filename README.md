@@ -39,7 +39,7 @@ $ cp .env.example .env
 ```
 
 ```bash
-$ cd docker 
+$ cd docker  
 $ cp .env.example .env
 ```
 update 'env' with your credentials

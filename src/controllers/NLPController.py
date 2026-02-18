@@ -3,7 +3,7 @@ from models.db_schemes import Project, DataChunk
 from stores.llm.LLMEnums import DocumentTypeEnum
 from typing import List
 import json
-
+import time
 class NLPController(BaseController):
 
     def __init__(self, vectordb_client, generation_client, 
@@ -64,6 +64,66 @@ class NLPController(BaseController):
 
         return True
 
+    # def index_into_vector_db(self, project: Project, chunks: List[DataChunk],
+    #                      chunks_ids: List[int], do_reset: bool = False,
+    #                      batch_size: int = 50, retry_delay: int = 60):
+    #     """
+    #     Indexe des chunks dans la base vectorielle en gérant les batches et les retries
+    #     pour éviter les erreurs TooManyRequests (429) sur Cohere Trial.
+        
+    #     batch_size: nombre de chunks par requête d'embeddings
+    #     retry_delay: secondes à attendre en cas de 429
+    #     """
+
+    #     # step1: get collection name
+    #     collection_name = self.create_collection_name(project_id=project.project_id)
+
+    #     # step2: manage items
+    #     texts = [c.chunk_text for c in chunks]
+    #     metadata = [c.chunk_metadata for c in chunks]
+    #     vectors = []
+
+    #     # --- Batching + retry automatique ---
+    #     for i in range(0, len(texts), batch_size):
+    #         batch = texts[i:i+batch_size]
+    #         success = False
+    #         while not success:
+    #             try:
+    #                 # embed batch
+    #                 batch_vectors = self.embedding_client.embed_text(
+    #                     text=batch,
+    #                     document_type=DocumentTypeEnum.DOCUMENT.value
+    #                 )
+    #                 vectors.extend(batch_vectors)
+    #                 success = True
+    #             except Exception as e:
+    #                 # si 429 ou autre erreur temporaire
+    #                 if "TooManyRequestsError" in str(type(e)) or getattr(e, "status_code", 0) == 429:
+    #                     print(f"⚠️ Quota dépassé, attente {retry_delay} secondes...")
+    #                     time.sleep(retry_delay)
+    #                 else:
+    #                     # autre erreur → raise
+    #                     raise e
+
+    #     # step3: create collection if not exists
+    #     _ = self.vectordb_client.create_collection(
+    #         collection_name=collection_name,
+    #         embedding_size=self.embedding_client.embedding_size,
+    #         do_reset=do_reset,
+    #     )
+
+    #     # step4: insert into vector db
+    #     _ = self.vectordb_client.insert_many(
+    #         collection_name=collection_name,
+    #         texts=texts,
+    #         metadata=metadata,
+    #         vectors=vectors,
+    #         record_ids=chunks_ids,
+    #     )
+
+    #     return True
+    
+    
     def search_vector_db_collection(self, project: Project, text: str, limit: int = 10):
 
         # step1: get collection name
@@ -83,7 +143,7 @@ class NLPController(BaseController):
             limit=limit
         )
 
-        if not results:
+        if not results: 
             return False
 
         return results
@@ -134,4 +194,3 @@ class NLPController(BaseController):
         )
 
         return answer, full_prompt, chat_history
-

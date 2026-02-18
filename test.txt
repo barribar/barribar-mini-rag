@@ -1,0 +1,41 @@
+{
+  chunk_project_id: ObjectId(
+    "699444ec741d7a0c5092f1a9"
+  )
+}
+
+
+
+
+
+{
+  "_id": {
+    "$oid": "69944507741d7a0c5092f1ad"
+  },
+  "chunk_text": "، ﻟﻜﻮﻧﻪ ﻳ ﻘﻮم ﻓﻲ\nاﻟﻐﺎﻟﺐ ﻋﻠﻰ ﺗﺸﻜﻴﻜﺎت ﻣﺠﺮدة، أو ﻋﺪم اﻗﺘﻨﺎع ﺷﺨﺼﻲ)، أو ﻋﺎﻃﻔﻲ3\n(\n ، ﻓﺈن اﻟﻨﻮع\n اﻟﺜﺎﻧﻲ ﻣﻦ اﻹﻟﺤﺎد–\n وﻫﻮ اﻹﻳﺠﺎﺑﻲ-اﻟﻘﺎﺋﻢ\nﻋﻠﻰ اﻟﺘﺪﻟﻴﻞ ﻋﻠﻰ ﻧﻔﻲ وﺟﻮد اﻹﻟﻪ ؛ ﻳﻜﻮن\nًﻫﻮ اﻷﻛﺜﺮ ﺣﻀﻮر)ا ﻓﻲ ﻣﺠﺎل اﻟﻤﻌﺮﻛﺔ اﻟﻔﻜﺮﻳﺔ ﺑﻴﻦ اﻹﻳﻤﺎن واﻹﻟﺤﺎد4\n(.\nﻓﻲ ذﻟﻚ اﻟﺴﻴﺎق اﻟ\nﺘﺤﻠﻴﻠﻲ ﻟﻺﻟﺤﺎد ﺑﻤﻔﻬﻮﻣﻪ اﻹﻳﺠﺎﺑﻲ\n، ﻳﻨﺒﻐﻲ أ ن ﻧﻤﻴﺰ ﺑﻴﻦ اﺗﺠﺎﻫﻴﻦ\nﻟﺬﻟﻚ اﻹﻟﺤﺎد: اﺗﺠﺎه ﻓﻠﺴﻔﻲ، واﺗﺠﺎه ﻋﻠﻤﻲ.\n ﻳﻘﻮم اﻻﺗﺠﺎه اﻟﻔﻠﺴﻔﻲ ﻋﻠﻰ ﺗﻘﺪﻳﻢ أدﻟﺔ ﻧﻔﻲ ﻓﻠﺴﻔﻴﺔ ﻓﻜﺮﻳﺔ، ﻛﺈﺑﻄﺎل ﻣﺒﺪأ\n اﻟﺴﺒﺒﻴﺔ، وﻧﻘﺾ ﻣﺒﺪأ\nاﻟﺨﻠﻖ، وﻣﺸﻜﻠﺔ اﻟﻌﺪل واﻟﺸﺮ، واﺳﺘﺤﺎﻟﺔ اﻟﻮﺣﻲ ، وﻧﻘﺪ اﻟﻜﺘﺐ\nاﻟﻤﻘﺪﺳﺔ ﻟﻸدﻳﺎن) ، واﺳﺘﺤﺎﻟﺔ اﻟﺤﻴﺎة ﺑﻌﺪ اﻟﻤﻮت(ﻣﺴﺄﻟﺔ اﻟﺨﻠﻮد ، أو إﺑﻄﺎل ﻣﻔﻬﻮﻣﻪ",
+  "chunk_metadata": {
+    "producer": "",
+    "creator": "Nitro Pro 8",
+    "creationdate": "",
+    "source": "/home/barribar/StudioProjects/AI/barribar-mini-rag/src/assets/files/3/dw2qhwf7ssau_Ilhade.pdf",
+    "file_path": "/home/barribar/StudioProjects/AI/barribar-mini-rag/src/assets/files/3/dw2qhwf7ssau_Ilhade.pdf",
+    "total_pages": 27,
+    "format": "PDF 1.7",
+    "title": "",
+    "author": "",
+    "subject": "",
+    "keywords": "",
+    "moddate": "2014-05-02T22:08:26+02:00",
+    "trapped": "",
+    "modDate": "D:20140502220826+02'00'",
+    "creationDate": "",
+    "page": 2
+  },
+  "chunk_order": 3,
+  "chunk_project_id": {
+    "$oid": "699444ec741d7a0c5092f1a9"
+  },
+  "chunk_asset_id": {
+    "$oid": "699444ec741d7a0c5092f1aa"
+  }
+}
