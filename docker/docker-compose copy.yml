@@ -1,0 +1,102 @@
+services:
+  mongodb:
+    image: mongo:7-jammy
+    
+    container_name: mongodb
+    
+    ports:
+      - "27007:27017"
+    
+    volumes:
+      #- ./mongodb:/data/db
+      - mongodata:/data/db #Ajoute à la fin volumes:
+    
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
+
+    networks:
+    - backend
+
+    restart: always
+
+  pgvector:
+      image: pgvector/pgvector:0.8.0-pg17
+      #image: pgvector/pgvector:0.8.1-pg18-trixie
+      container_name: pgvector
+      ports:
+        - "5400:5432"
+      volumes:
+        - pgvector_data:/var/lib/postgresql/data
+      environment:
+        - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      networks:
+        - backend
+      restart: always
+
+  # --------------------
+  # FastAPI
+  # --------------------
+  api:
+    build: .
+    container_name: fastapi
+    ports:
+      - "5000:5000"
+    environment:
+      - POSTGRESS_USERNAME=${POSTGRESS_USERNAME}
+      - POSTGRESS_PASSWORD=${POSTGRESS_PASSWORD}
+      - POSTGRESS_HOSTS=pgvector
+      - POSTGRESS_PORT=5432
+      - POSTGRESS_MAIN_DATABASE=${POSTGRESS_MAIN_DATABASE}
+      - MONGODB_URL=mongodb://admin:${MONGO_INITDB_ROOT_PASSWORD}@mongodb:27017
+      - MONGODB_DATABASE=${MONGODB_DATABASE}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - COHERE_API_KEY=${COHERE_API_KEY}
+      - VECTOR_DB_BACKEND=${VECTOR_DB_BACKEND}
+      - VECTOR_DB_PATH=${VECTOR_DB_PATH}
+      - VECTOR_DB_DISTANCE_METHOD=${VECTOR_DB_DISTANCE_METHOD}
+    networks:
+      - backend
+    restart: always
+    command: >
+      uvicorn main:app
+      --host 0.0.0.0
+      --port 5000
+      --reload
+
+  # --------------------
+  # n8n
+  # --------------------
+  n8n:
+    image: n8nio/n8n:latest
+    container_name: n8n
+    ports:
+      - "5678:5678"
+    environment:
+      - N8N_BASIC_AUTH_ACTIVE=true
+      - N8N_BASIC_AUTH_USER=${N8N_BASIC_AUTH_USER}
+      - N8N_BASIC_AUTH_PASSWORD=${N8N_BASIC_AUTH_PASSWORD}
+      - N8N_ENCRYPTION_KEY=${N8N_ENCRYPTION_KEY}
+      - N8N_HOST=n8n
+      - N8N_PORT=5678
+      - WEBHOOK_URL=${WEBHOOK_URL}
+      - GENERIC_TIMEZONE=${GENERIC_TIMEZONE}
+      - N8N_SECRET=${N8N_SECRET}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - n8n_data:/home/node/.n8n
+    networks:
+      - backend
+    restart: always
+
+  # --------------------
+# Networks & Volumes
+# --------------------
+networks:
+  backend:
+
+volumes:
+  mongodata:
+  pgvector_data:
+  n8n_data:

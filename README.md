@@ -55,6 +55,9 @@ sudo docker rm $(sudo docker ps -aq) # remove all container
 sudo docker rmi $(sudo docker images -q) # remove all images
 sudo docker volume rm $(sudo docker volume ls -q) # remove all volumes
 sudo docker system prune --all # clear all
+
+docker compose down
+
 sudo docker compose up -d # start docker (-d en background)
 
 ### Ollama
