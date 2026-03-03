@@ -1,5 +1,6 @@
 from .LLMEnums import LLMEnums
 from .providers import OpenAIProvider, CoHereProvider
+from .providers.Ollama_provider import OllamaProvider
 
 
 class LLMProviderFactory:
@@ -19,6 +20,16 @@ class LLMProviderFactory:
         if provider == LLMEnums.COHERE.value:
             return CoHereProvider(
                 api_key = self.config.COHERE_API_KEY,
+                default_input_max_characters=self.config.INPUT_DAFAULT_MAX_CHARACTERS,
+                default_generation_max_output_tokens=self.config.GENERATION_DAFAULT_MAX_TOKENS,
+                default_generation_temperature=self.config.GENERATION_DAFAULT_TEMPERATURE
+            )
+        
+        if provider == LLMEnums.OLLAMA.value:
+            return OllamaProvider(
+                generation_model_id=self.config.GENERATION_MODEL_ID,
+                embedding_model_id=self.config.EMBEDDING_MODEL_ID,
+                api_url=self.config.OLLAMA_API_URL,
                 default_input_max_characters=self.config.INPUT_DAFAULT_MAX_CHARACTERS,
                 default_generation_max_output_tokens=self.config.GENERATION_DAFAULT_MAX_TOKENS,
                 default_generation_temperature=self.config.GENERATION_DAFAULT_TEMPERATURE
