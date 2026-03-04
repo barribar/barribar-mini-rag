@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from routes import base, data, nlp
+from routes import base, data, duplicateFileRecursif, duplicateFileSansRecursid, nlp
 # from motor.motor_asyncio import AsyncIOMotorClient
 from helpers.config import get_settings
 from stores.llm.LLMProviderFactory import LLMProviderFactory
@@ -58,3 +58,5 @@ app.on_event("shutdown")(shutdown_span)
 app.include_router(base.base_router)
 app.include_router(data.data_router)
 app.include_router(nlp.nlp_router)
+app.include_router(duplicateFileRecursif.duplicate_router)
+app.include_router(duplicateFileSansRecursid.duplicate_router)
