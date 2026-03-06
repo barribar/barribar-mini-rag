@@ -1,5 +1,6 @@
 from fastapi import FastAPI
-from routes import base, data, nlp, duplicateFileRecursif, duplicateFileSansRecursid, largeFiles 
+from routes import ( base, data, nlp, duplicateFileRecursif, 
+                    duplicateFileSansRecursid, largeFiles, searchFiles )
 # from motor.motor_asyncio import AsyncIOMotorClient
 from helpers.config import get_settings
 from stores.llm.LLMProviderFactory import LLMProviderFactory
@@ -61,3 +62,4 @@ app.include_router(nlp.nlp_router)
 app.include_router(duplicateFileRecursif.duplicate_router)
 app.include_router(duplicateFileSansRecursid.duplicate_router)
 app.include_router(largeFiles.large_files_router)
+app.include_router(searchFiles.search_files_router)
