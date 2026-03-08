@@ -1,24 +1,24 @@
 services:
-  mongodb:
-    image: mongo:7-jammy
+  # mongodb:
+  #   image: mongo:7-jammy
     
-    container_name: mongodb
+  #   container_name: mongodb
     
-    ports:
-      - "27007:27017"
+  #   ports:
+  #     - "27007:27017"
     
-    volumes:
-      #- ./mongodb:/data/db
-      - mongodata:/data/db #Ajoute à la fin volumes:
+  #   volumes:
+  #     #- ./mongodb:/data/db
+  #     - mongodata:/data/db #Ajoute à la fin volumes:
     
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
-      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
+  #   environment:
+  #     - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
+  #     - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
 
-    networks:
-    - backend
+  #   networks:
+  #   - backend
 
-    restart: always
+  #   restart: always
 
   pgvector:
       image: pgvector/pgvector:0.8.0-pg17
@@ -38,5 +38,5 @@ networks:
   backend:
 
 volumes:
-  mongodata:
+  # mongodata:
   pgvector_data:

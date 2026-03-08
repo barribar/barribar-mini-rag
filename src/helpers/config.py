@@ -20,6 +20,9 @@ class Settings(BaseSettings):
     POSTGRESS_PORT: int
     POSTGRESS_MAIN_DATABASE: str
 
+    POSTGRESS_PDF_DATABASE:str
+    
+
     GENERATION_BACKEND: str
     EMBEDDING_BACKEND: str
 
