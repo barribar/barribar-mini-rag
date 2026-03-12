@@ -30,3 +30,40 @@ class InsertPdfFilesResponse(BaseModel):
     total_inserted: int
     total_skipped: int
     total_failed: int
+
+from pydantic import BaseModel
+from typing import List
+
+# ---------------------------
+# Pour /unlockPDF
+# ---------------------------
+class UnlockPDFResult(BaseModel):
+    filename: str
+    status: str
+    message: str
+
+class UnlockPDFResponse(BaseModel):
+    signal: str
+    input_folder: str
+    output_folder: str
+    total_found: int
+    total_unlocked: int
+    total_failed: int
+    results: List[UnlockPDFResult]
+
+# ---------------------------
+# Pour /convertPdfToBwGhostscript
+# ---------------------------
+class ConvertPDFResult(BaseModel):
+    filename: str
+    status: str
+    message: str
+
+class ConvertPDFResponse(BaseModel):
+    signal: str
+    input_folder: str
+    output_folder: str
+    total_found: int
+    total_converted: int
+    total_failed: int
+    results: List[ConvertPDFResult]
