@@ -1,0 +1,5 @@
+from .telegram_base import TelegramSQLAlchemyBase
+from .AllTelegramMaktabaFr import AllTelegramMaktabaFr
+from .AllTelegramKotobFr import AllTelegramKotobFr
+from .AllTelegramMaktabaAr import AllTelegramMaktabaAr
+from .AllTelegramKotobAr import AllTelegramKotobAr

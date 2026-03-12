@@ -3,10 +3,11 @@
 import os
 import asyncio
 from telethon import TelegramClient
+from helpers.config import get_settings, Settings
 
-api_id = 27097109
-api_hash = '7b901535c3dae1bd4217303a72659072'
-session_name = 'mySession'
+api_id = Settings.api_id
+api_hash = Settings.api_hash
+session_name = Settings.session_name
 
 channel = "https://t.me/Joutiya_Library"
 folder = "/media/barribar/NewDisc/PDF/python/python_django"

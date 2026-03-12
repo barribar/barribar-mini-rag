@@ -11,6 +11,10 @@ class Settings(BaseSettings):
     FILE_MAX_SIZE: int
     FILE_DEFAULT_CHUNK_SIZE: int
 
+    api_id: int
+    api_hash: str
+    session_name: str
+    
     # MONGODB_URL: str
     # MONGODB_DATABASE: str
 
@@ -20,7 +24,9 @@ class Settings(BaseSettings):
     POSTGRESS_PORT: int
     POSTGRESS_MAIN_DATABASE: str
 
-    POSTGRESS_PDF_DATABASE:str
+    POSTGRESS_PDF_DATABASE: str
+
+    POSTGRESS_TELEGRAM_DATABASE: str
     
 
     GENERATION_BACKEND: str
