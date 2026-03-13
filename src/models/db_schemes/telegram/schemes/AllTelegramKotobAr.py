@@ -11,7 +11,7 @@ class AllTelegramKotobAr(TelegramSQLAlchemyBase):
 
     
     kitab_id     = Column(BigInteger, primary_key=True)
-    kitab_uuid = Column(UUID(as_uuid=True), default=uuid.uuid4, unique=True, nullable=False)
+    #kitab_uuid = Column(UUID(as_uuid=True), default=uuid.uuid4, unique=True, nullable=False)
     kitab_title  = Column(String, nullable=True)
     kitab_message= Column(String, nullable=True)
     kitab_date   = Column(String, nullable=True)

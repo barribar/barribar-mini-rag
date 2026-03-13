@@ -10,7 +10,7 @@ class AllTelegramMaktabaAr(TelegramSQLAlchemyBase):
     __tablename__ = "all_telegram_maktaba_ar"
 
     maktaba_id  = Column(Integer, primary_key=True, autoincrement=True)
-    maktaba_uuid = Column(UUID(as_uuid=True), default=uuid.uuid4, unique=True, nullable=False)
+    # maktaba_uuid = Column(UUID(as_uuid=True), default=uuid.uuid4, unique=True, nullable=False)
     maktaba_name =  Column(String, nullable=False)
     maktaba_link = Column(String, nullable=False, unique=True)
     maktaba_info  = Column(String, nullable=True)

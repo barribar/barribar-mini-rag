@@ -1,0 +1,36 @@
+Generic single-database configuration.
+
+## 1. Initialiser alembic pour telegram
+
+bash
+cd /home/barribar/Projects/AI/barribar-mini-rag/src/models/db_schemes/telegram
+
+alembic init alembic
+```
+
+Ça va créer automatiquement :
+```
+telegram/
+├── alembic/
+│   ├── versions/        ← tes migrations
+│   ├── env.py           ← config de connexion
+│   ├── script.py.mako   ← template (le fichier manquant !)
+│   └── README
+└── alembic.ini          ← config principale
+
+## 2. Configurer alembic.ini
+    inisqlalchemy.url = postgresql://postgres:MOT_DE_PASSE@localhost:5432/telegramfile
+    sqlalchemy.url = postgresql://postgres:postgres@localhost:5400/telegramfile
+
+## 3. Configurer env.py
+
+from models.all_telegram_maktaba_fr import AllTelegramMaktabaFr
+from models.all_telegram_kotob_fr import AllTelegramKotobFr
+from telegram_base import TelegramSQLAlchemyBase
+
+target_metadata = TelegramSQLAlchemyBase.metadata
+
+## 4. Relancer la migration
+bash
+alembic revision --autogenerate -m "Add Telegram Tables"
+alembic upgrade head
