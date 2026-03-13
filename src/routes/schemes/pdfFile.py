@@ -31,9 +31,6 @@ class InsertPdfFilesResponse(BaseModel):
     total_skipped: int
     total_failed: int
 
-from pydantic import BaseModel
-from typing import List
-
 # ---------------------------
 # Pour /unlockPDF
 # ---------------------------

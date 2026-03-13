@@ -14,7 +14,7 @@ class AllTelegramKotobFr(TelegramSQLAlchemyBase):
                            initially="DEFERRED"), 
                            nullable=False)
     
-    kitab_id     = Column(BigInteger, primary_key=True)
+    kitab_id     = Column(BigInteger, autoincrement=True) #, primary_key=True)
     # kitab_uuid = Column(UUID(as_uuid=True), default=uuid.uuid4, unique=True, nullable=False)
     kitab_title  = Column(String, nullable=True)
     kitab_message= Column(String, nullable=True)
@@ -22,7 +22,6 @@ class AllTelegramKotobFr(TelegramSQLAlchemyBase):
     kitab_size   = Column(BigInteger, nullable=True)
     kitab_link   = Column(String, nullable=True)
     kitab_group  = Column(String, nullable=True)
-
 
 
     __table_args__ = (

@@ -11,9 +11,10 @@ class Settings(BaseSettings):
     FILE_MAX_SIZE: int
     FILE_DEFAULT_CHUNK_SIZE: int
 
-    api_id: int
-    api_hash: str
-    session_name: str
+    TELEGRAM_SESSION_API_ID: int
+    TELEGRAM_SESSION_API_HASH: str
+    # session_name: str
+    TELEGRAM_SESSION_NAME: str
     
     # MONGODB_URL: str
     # MONGODB_DATABASE: str

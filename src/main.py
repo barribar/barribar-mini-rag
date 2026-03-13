@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from routes import ( base, data, nlp, fileUtilities, pdfFile)
+from routes import ( base, data, nlp, fileUtilities, pdfFile, telegramFile)
 # from motor.motor_asyncio import AsyncIOMotorClient
 from helpers.config import get_settings
 from stores.llm.LLMProviderFactory import LLMProviderFactory
@@ -28,6 +28,12 @@ async def startup_span():
     app.pdf_db_client = sessionmaker(
         app.pdf_db_engine, class_=AsyncSession, expire_on_commit=False,
     )
+
+    postgres_telegram_conn = f"postgresql+asyncpg://{settings.POSTGRESS_USERNAME}:{settings.POSTGRESS_PASSWORD}@{settings.POSTGRESS_HOSTS}:{settings.POSTGRESS_PORT}/{settings.POSTGRESS_TELEGRAM_DATABASE}"
+    app.telegram_db_engine = create_async_engine(postgres_telegram_conn)
+    app.telegram_db_client = sessionmaker(
+    app.telegram_db_engine, class_=AsyncSession, expire_on_commit=False,
+    )
     
     llm_provider_factory = LLMProviderFactory(settings)
     vectordb_provider_factory = VectorDBProviderFactory(config=settings, db_client=app.db_client)
@@ -55,8 +61,10 @@ async def startup_span():
 
 async def shutdown_span():
     # app.mongo_conn.close()
-    app.db_engine.dispose()
-    app.pdf_db_engine.dispose()
+    await app.db_engine.dispose()
+    await app.pdf_db_engine.dispose()
+    await app.telegram_db_engine.dispose()
+    
     await app.vectordb_client.disconnect()
 
     # await app.pdf_db_engine.async_dispose()
@@ -69,3 +77,4 @@ app.include_router(data.data_router)
 app.include_router(nlp.nlp_router)
 app.include_router(fileUtilities.fileUtilities_router)
 app.include_router(pdfFile.pdfFile_router)
+app.include_router(telegramFile.telegramFile_router)
