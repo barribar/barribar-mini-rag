@@ -15,3 +15,12 @@ class InsertTelegramFilesResponse(BaseModel):
     total_inserted: int
     total_skipped: int
     total_failed: int
+
+
+class TelechargerTelegramResponse(BaseModel):
+    signal: str
+    maktaba_id: int
+    channel: str
+    total_inserted: int
+    total_skipped: int
+    total_failed: int

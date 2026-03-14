@@ -1,5 +1,5 @@
 from .telegram_base import TelegramSQLAlchemyBase
-from sqlalchemy import Column, Integer, DateTime, func, String, BigInteger, ForeignKey, PrimaryKeyConstraint
+from sqlalchemy import Column, Integer, DateTime, func, String, TEXT ,BigInteger, ForeignKey, PrimaryKeyConstraint
 from sqlalchemy.dialects.postgresql import UUID, JSONB
 import uuid
 from sqlalchemy.orm import relationship
@@ -14,22 +14,18 @@ class AllTelegramKotobFr(TelegramSQLAlchemyBase):
                            initially="DEFERRED"), 
                            nullable=False)
     
-    kitab_id     = Column(BigInteger, autoincrement=True) #, primary_key=True)
+    kitab_id     = Column(Integer, primary_key=True, autoincrement=True)
     # kitab_uuid = Column(UUID(as_uuid=True), default=uuid.uuid4, unique=True, nullable=False)
-    kitab_title  = Column(String, nullable=True)
-    kitab_message= Column(String, nullable=True)
-    kitab_date   = Column(String, nullable=True)
+    kitab_title  = Column(TEXT, nullable=False)
+    kitab_message= Column(TEXT, nullable=True)
+    kitab_date   = Column(TEXT, nullable=True)
     kitab_size   = Column(BigInteger, nullable=True)
-    kitab_link   = Column(String, nullable=True)
-    kitab_group  = Column(String, nullable=True)
+    kitab_link   = Column(TEXT, nullable=True)
+    kitab_group  = Column(TEXT, nullable=True)
 
-
-    __table_args__ = (
-        # Clé primaire composite (maktaba, kitab_id)
-        PrimaryKeyConstraint("maktaba", "kitab_id", name="all_telegram_kotob_fr_pkey"),
-    )
 
     # Relation vers AllTelegramMaktabaFr
     maktaba_fr  = relationship("AllTelegramMaktabaFr", back_populates="kotob_fr")
+
 
 
