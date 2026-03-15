@@ -240,6 +240,7 @@ async def telecharger_one_maktaba_fr(request: Request,
                     # Insère dans la DB
                     await telegram_model.insert_kitab(
                         maktaba_id=maktaba_id,
+                        kitab_id=message.id,  # ← ajoute cette ligne
                         title=title,
                         kitab_link=kitab_link,
                         kitab_size=message.file.size if message.file else 0,
