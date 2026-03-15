@@ -1,10 +1,10 @@
 from fastapi import APIRouter, Depends, Request, status
 from fastapi.responses import JSONResponse
 from helpers.config import get_settings, Settings
-from routes.schemes.telegramFile import (
-    InsertTelegramFilesResponse, TelechargerTelegramResponse
+from routes.schemes.telegramFileAr import (
+    InsertTelegramFilesResponseAr, TelechargerTelegramResponseAr
 )
-from models.TelegramModel import TelegramModel
+from models.TelegramArModel import TelegramArModel
 import os
 import logging
 from datetime import datetime
@@ -12,13 +12,13 @@ from typing import List
 
 logger = logging.getLogger('uvicorn.error')
 
-telegramFile_router = APIRouter(
-    prefix="/api/v1/telegramFile",
-    tags=["api_v1", "telegramFile"],
+telegramFileAr_router = APIRouter(
+    prefix="/api/v1/telegramFileAr",
+    tags=["api_v1", "telegramFileAr"],
 )
 
 
-@telegramFile_router.post("/scan-and-upload", response_model=InsertTelegramFilesResponse)
+@telegramFileAr_router.post("/scan-and-upload", response_model=InsertTelegramFilesResponseAr)
 async def scan_and_upload(request: Request, directory: str,
                           maktaba_id: int,
                           file_type: str = "pdf",
@@ -31,7 +31,7 @@ async def scan_and_upload(request: Request, directory: str,
         )
 
     # Init Telegram model
-    telegram_model = await TelegramModel.create_instance(
+    telegram_model = await TelegramArModel.create_instance(
         db_client=request.app.telegram_db_client
     )
 
@@ -121,7 +121,7 @@ async def scan_and_upload(request: Request, directory: str,
     finally:
         await client.disconnect()
 
-    return InsertTelegramFilesResponse(
+    return InsertTelegramFilesResponseAr(
         signal="UPLOAD_SUCCESS",
         total_scanned=total_scanned,
         total_inserted=total_inserted,
@@ -130,12 +130,12 @@ async def scan_and_upload(request: Request, directory: str,
     )
 
 
-@telegramFile_router.post("/telecharger_one_maktaba_fr", response_model=TelechargerTelegramResponse)
+@telegramFileAr_router.post("/telecharger_one_maktaba_fr", response_model=TelechargerTelegramResponseAr)
 async def telecharger_one_maktaba_fr(request: Request,
                                     maktaba_id: int,
                                     app_settings: Settings = Depends(get_settings)):
 
-    telegram_model = await TelegramModel.create_instance(
+    telegram_model = await TelegramArModel.create_instance(
         db_client=request.app.telegram_db_client
     )
 
@@ -195,7 +195,7 @@ async def telecharger_one_maktaba_fr(request: Request,
         else:
             limit = last_id_in_channel - last_id_in_db
             if limit <= 0:
-                return TelechargerTelegramResponse(
+                return TelechargerTelegramResponseAr(
                     signal="ALREADY_UP_TO_DATE",
                     maktaba_id=maktaba_id,
                     channel=str(channel),
@@ -257,7 +257,7 @@ async def telecharger_one_maktaba_fr(request: Request,
 
         except Exception as e:
             logger.error(f"Erreur channel {channel}: {e}")
-            return TelechargerTelegramResponse(
+            return TelechargerTelegramResponseAr(
                 signal=f"CHANNEL_ERROR: {str(e)}",
                 maktaba_id=maktaba_id,
                 channel=str(channel),
@@ -269,7 +269,7 @@ async def telecharger_one_maktaba_fr(request: Request,
     finally:
         await client.disconnect()
 
-    return TelechargerTelegramResponse(
+    return TelechargerTelegramResponseAr(
         signal="DOWNLOAD_SUCCESS",
         maktaba_id=maktaba_id,
         channel=str(channel),
@@ -279,11 +279,11 @@ async def telecharger_one_maktaba_fr(request: Request,
     )
 
 
-@telegramFile_router.post("/telecharger_all_maktabat_fr", response_model=List[TelechargerTelegramResponse])
+@telegramFileAr_router.post("/telecharger_all_maktabat_fr", response_model=List[TelechargerTelegramResponseAr])
 async def telecharger_all_maktabat_fr(request: Request,
                                    app_settings: Settings = Depends(get_settings)):
 
-    telegram_model = await TelegramModel.create_instance(
+    telegram_model = await TelegramArModel.create_instance(
         db_client=request.app.telegram_db_client
     )
 
@@ -334,7 +334,7 @@ async def telecharger_all_maktabat_fr(request: Request,
 
                 if last_id_in_channel is None:
                     logger.error(f"Channel vide ou introuvable : {channel}")
-                    results.append(TelechargerTelegramResponse(
+                    results.append(TelechargerTelegramResponseAr(
                         signal="CHANNEL_EMPTY_OR_NOT_FOUND",
                         maktaba_id=maktaba.maktaba_id,
                         channel=channel,
@@ -349,7 +349,7 @@ async def telecharger_all_maktabat_fr(request: Request,
                 else:
                     limit = last_id_in_channel - last_id_in_db
                     if limit <= 0:
-                        results.append(TelechargerTelegramResponse(
+                        results.append(TelechargerTelegramResponseAr(
                             signal="ALREADY_UP_TO_DATE",
                             maktaba_id=maktaba.maktaba_id,
                             channel=channel,
@@ -402,7 +402,7 @@ async def telecharger_all_maktabat_fr(request: Request,
 
             except Exception as e:
                 logger.error(f"Erreur channel {channel}: {e}")
-                results.append(TelechargerTelegramResponse(
+                results.append(TelechargerTelegramResponseAr(
                     signal=f"CHANNEL_ERROR: {str(e)}",
                     maktaba_id=maktaba.maktaba_id,
                     channel=channel,
@@ -412,7 +412,7 @@ async def telecharger_all_maktabat_fr(request: Request,
                 ))
                 continue
 
-            results.append(TelechargerTelegramResponse(
+            results.append(TelechargerTelegramResponseAr(
                 signal="DOWNLOAD_SUCCESS",
                 maktaba_id=maktaba.maktaba_id,
                 channel=channel,

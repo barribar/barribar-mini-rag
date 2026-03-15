@@ -1,5 +1,6 @@
 from fastapi import FastAPI
-from routes import ( base, data, nlp, fileUtilities, pdfFile, telegramFile)
+from routes import ( base, data, nlp, fileUtilities, pdfFile,
+                     telegramFileFr,telegramFileAr)
 # from motor.motor_asyncio import AsyncIOMotorClient
 from helpers.config import get_settings
 from stores.llm.LLMProviderFactory import LLMProviderFactory
@@ -77,4 +78,5 @@ app.include_router(data.data_router)
 app.include_router(nlp.nlp_router)
 app.include_router(fileUtilities.fileUtilities_router)
 app.include_router(pdfFile.pdfFile_router)
-app.include_router(telegramFile.telegramFile_router)
+app.include_router(telegramFileFr.telegramFileFr_router)
+app.include_router(telegramFileAr.telegramFileAr_router)

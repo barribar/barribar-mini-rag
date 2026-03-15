@@ -2,14 +2,14 @@ from pydantic import BaseModel
 from typing import List, Optional
 
 
-class InsertedTelegramFiles(BaseModel):
+class InsertedTelegramFilesFr(BaseModel):
     filename: str
     path: str
     status: str       # "inserted" | "skipped" | "error"
     message: str
 
 
-class InsertTelegramFilesResponse(BaseModel):
+class InsertTelegramFilesResponseFr(BaseModel):
     signal: str
     total_scanned: int
     total_inserted: int
@@ -17,7 +17,7 @@ class InsertTelegramFilesResponse(BaseModel):
     total_failed: int
 
 
-class TelechargerTelegramResponse(BaseModel):
+class TelechargerTelegramResponseFr(BaseModel):
     signal: str
     maktaba_id: int
     channel: str

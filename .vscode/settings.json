@@ -1,4 +1,5 @@
 {
     "python.languageServer": "Pylance",
-    "python.defaultInterpreterPath": "/home/barribar/miniconda3/envs/barribar/bin/python"
+    "python.defaultInterpreterPath": "/home/barribar/miniconda3/envs/barribar/bin/python",
+    "python.terminal.activateEnvironment": true
 }

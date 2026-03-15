@@ -1,10 +1,10 @@
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 from models.db_schemes.telegram.schemes.telegram_base import TelegramSQLAlchemyBase
-from models.db_schemes.telegram.schemes import AllTelegramMaktabaFr, AllTelegramKotobFr
+from models.db_schemes.telegram.schemes import AllTelegramMaktabaAr, AllTelegramKotobAr
 from sqlalchemy import func
 
-class TelegramModel:
+class TelegramArModel:
 
     def __init__(self, db_client):
         self.db_client = db_client
@@ -17,8 +17,8 @@ class TelegramModel:
         async with self.db_client() as session:
             async with session.begin():
                 result = await session.execute(
-                    select(AllTelegramMaktabaFr).where(
-                        AllTelegramMaktabaFr.maktaba_id == maktaba_id
+                    select(AllTelegramMaktabaAr).where(
+                        AllTelegramMaktabaAr.maktaba_id == maktaba_id
                     )
                 )
                 return result.scalar_one_or_none()
@@ -27,9 +27,9 @@ class TelegramModel:
         async with self.db_client() as session:
             async with session.begin():
                 result = await session.execute(
-                    select(AllTelegramKotobFr).where(
-                        AllTelegramKotobFr.maktaba == maktaba_id,
-                        AllTelegramKotobFr.kitab_title == title
+                    select(AllTelegramKotobAr).where(
+                        AllTelegramKotobAr.maktaba == maktaba_id,
+                        AllTelegramKotobAr.kitab_title == title
                     )
                 )
                 return result.scalar_one_or_none()
@@ -39,8 +39,8 @@ class TelegramModel:
         async with self.db_client() as session:
             async with session.begin():
                 result = await session.execute(
-                    select(func.max(AllTelegramKotobFr.kitab_id)).where(
-                        AllTelegramKotobFr.maktaba == maktaba_id
+                    select(func.max(AllTelegramKotobAr.kitab_id)).where(
+                        AllTelegramKotobAr.maktaba == maktaba_id
                     )
                 )
                 return result.scalar_one_or_none()
@@ -48,7 +48,7 @@ class TelegramModel:
     async def get_all_maktabat(self):
         async with self.db_client() as session:
             async with session.begin():
-                result = await session.execute(select(AllTelegramMaktabaFr))
+                result = await session.execute(select(AllTelegramMaktabaAr))
                 return result.scalars().all()
     
     async def insert_kitab(self, maktaba_id: int,  kitab_id: int, title: str, kitab_link: str,
@@ -56,7 +56,7 @@ class TelegramModel:
                            kitab_message: str = None, kitab_group: str = None):
         async with self.db_client() as session:
             async with session.begin():
-                record = AllTelegramKotobFr(
+                record = AllTelegramKotobAr(
                     maktaba=maktaba_id,
                     kitab_id=kitab_id,  # ← ajoute ça
                     kitab_title=title,
